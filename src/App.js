@@ -1,6 +1,7 @@
 import NavBar from './component/NavBar';
 import Home from './component/Home'
 import image from './images/bg.jpg'
+import Alignogram from './component/Alignogram';
 import './App.css';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     style={{backgroundImage: `url(${image})` }}>
       <NavBar />
       <Home />
+      <Alignogram/>
     </div>
    
 
