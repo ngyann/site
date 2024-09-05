@@ -11,7 +11,6 @@ function App() {
     style={{backgroundImage: `url(${image})` }}>
       <NavBar />
       <Home />
-      <Alignogram/>
     </div>
    
 
