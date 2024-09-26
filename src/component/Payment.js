@@ -6,13 +6,19 @@ function PaymentPage() {
   const [expirationDate, setExpirationDate] = useState('');
   const [cvv, setCVV] = useState('');
   const [paypalEmail, setPaypalEmail] = useState('');
+  const [error, setError] = useState('');
 
   const handlePaymentMethodChange = (event) => {
     setPaymentMethod(event.target.value);
+    setError(''); // Reset error message when changing payment method
   };
 
   const handleCreditCardSubmit = (event) => {
     event.preventDefault();
+    if (!cardNumber || !expirationDate || !cvv) {
+      setError('Please fill in all credit card fields.');
+      return;
+    }
     // Process credit card payment
     console.log('Credit card payment submitted:', {
       cardNumber,
@@ -23,6 +29,10 @@ function PaymentPage() {
 
   const handlePaypalSubmit = (event) => {
     event.preventDefault();
+    if (!paypalEmail) {
+      setError('Please enter your PayPal email.');
+      return;
+    }
     // Process PayPal payment
     console.log('PayPal payment submitted:', { paypalEmail });
   };
@@ -30,7 +40,8 @@ function PaymentPage() {
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100" id="Payment">
       <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-md">
-        <h1 className="text-[#050C9C] text-2xl font-bold mb-6">Our Payment methods</h1>
+        <h1 className="text-[#050C9C] text-2xl font-bold mb-6">Our Payment Methods</h1>
+        {error && <p className="text-red-500 mb-4">{error}</p>}
         <form>
           <div className="mb-4">
             <label className="block font-medium mb-2" htmlFor="payment-method">
@@ -59,11 +70,13 @@ function PaymentPage() {
                   id="card-number"
                   value={cardNumber}
                   onChange={(e) => setCardNumber(e.target.value)}
+                  placeholder="1234 5678 9012 3456"
+                  required
                 />
               </div>
               <div className="mb-4">
                 <label className="block font-medium mb-2" htmlFor="expiration-date">
-                  Expiration Date:
+                  Expiration Date (MM/YY):
                 </label>
                 <input
                   className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -71,6 +84,8 @@ function PaymentPage() {
                   id="expiration-date"
                   value={expirationDate}
                   onChange={(e) => setExpirationDate(e.target.value)}
+                  placeholder="MM/YY"
+                  required
                 />
               </div>
               <div className="mb-4">
@@ -83,6 +98,8 @@ function PaymentPage() {
                   id="cvv"
                   value={cvv}
                   onChange={(e) => setCVV(e.target.value)}
+                  placeholder="123"
+                  required
                 />
               </div>
               <button
@@ -106,6 +123,8 @@ function PaymentPage() {
                   id="paypal-email"
                   value={paypalEmail}
                   onChange={(e) => setPaypalEmail(e.target.value)}
+                  placeholder="youremail@example.com"
+                  required
                 />
               </div>
               <button

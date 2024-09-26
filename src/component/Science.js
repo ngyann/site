@@ -6,7 +6,7 @@ import image from "../images/science.jpg"
 function Science() {
   return (
     <>
-      <section className="bg-[#f5f5f5] py-10" id="Science-Section">
+      <section className="bg-[#f5f5f5] py-10" id="Science">
         <h1 className="text-[#050C9C] font-['Sora']font-semibold text-3xl flex items-center justify-center mb-5">
           SCIENCE
         </h1>
