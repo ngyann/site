@@ -25,7 +25,7 @@ function Home() {
   return (
     <div>
       <header className="flex justify-center items-center mt-20" id="Home">
-        <h1 className="text-3xl text-white font-['Sora'] font-normal text-center mt-10">
+        <h1 className="text-lg text-white font-['Sora'] font-normal text-center mt-10">
           WELCOME TO ZEZE LTD A DIGITAL MEDICAL<br />
           DEVICE MANUFACTURING COMPANY
         </h1>
